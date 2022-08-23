@@ -13,6 +13,15 @@
 		671E8AD128B276BB0072F9AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 671E8ACF28B276BB0072F9AE /* Main.storyboard */; };
 		671E8AD328B276BE0072F9AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 671E8AD228B276BE0072F9AE /* Assets.xcassets */; };
 		671E8AD628B276BE0072F9AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 671E8AD428B276BE0072F9AE /* LaunchScreen.storyboard */; };
+		671E8ADE28B2776F0072F9AE /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671E8ADD28B2776F0072F9AE /* Entity.swift */; };
+		671E8AE728B334DC0072F9AE /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671E8AE028B334DC0072F9AE /* ProfilePresenter.swift */; };
+		671E8AE828B334DC0072F9AE /* ProfileLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671E8AE128B334DC0072F9AE /* ProfileLocalDataManager.swift */; };
+		671E8AE928B334DC0072F9AE /* ProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671E8AE228B334DC0072F9AE /* ProfileProtocols.swift */; };
+		671E8AEA28B334DC0072F9AE /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671E8AE328B334DC0072F9AE /* ProfileInteractor.swift */; };
+		671E8AEB28B334DC0072F9AE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671E8AE428B334DC0072F9AE /* ProfileView.swift */; };
+		671E8AEC28B334DC0072F9AE /* ProfileRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671E8AE528B334DC0072F9AE /* ProfileRemoteDataManager.swift */; };
+		671E8AED28B334DC0072F9AE /* ProfileWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671E8AE628B334DC0072F9AE /* ProfileWireFrame.swift */; };
+		671E8AEF28B33C850072F9AE /* ProfileView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 671E8AEE28B33C850072F9AE /* ProfileView.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +33,15 @@
 		671E8AD228B276BE0072F9AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		671E8AD528B276BE0072F9AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		671E8AD728B276BE0072F9AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		671E8ADD28B2776F0072F9AE /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		671E8AE028B334DC0072F9AE /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		671E8AE128B334DC0072F9AE /* ProfileLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLocalDataManager.swift; sourceTree = "<group>"; };
+		671E8AE228B334DC0072F9AE /* ProfileProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProtocols.swift; sourceTree = "<group>"; };
+		671E8AE328B334DC0072F9AE /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		671E8AE428B334DC0072F9AE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		671E8AE528B334DC0072F9AE /* ProfileRemoteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRemoteDataManager.swift; sourceTree = "<group>"; };
+		671E8AE628B334DC0072F9AE /* ProfileWireFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWireFrame.swift; sourceTree = "<group>"; };
+		671E8AEE28B33C850072F9AE /* ProfileView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileView.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +74,32 @@
 		671E8AC828B276BB0072F9AE /* just */ = {
 			isa = PBXGroup;
 			children = (
+				671E8ADF28B333360072F9AE /* Profile */,
 				671E8AC928B276BB0072F9AE /* AppDelegate.swift */,
 				671E8ACB28B276BB0072F9AE /* SceneDelegate.swift */,
 				671E8ACD28B276BB0072F9AE /* ViewController.swift */,
+				671E8ADD28B2776F0072F9AE /* Entity.swift */,
 				671E8ACF28B276BB0072F9AE /* Main.storyboard */,
 				671E8AD228B276BE0072F9AE /* Assets.xcassets */,
 				671E8AD428B276BE0072F9AE /* LaunchScreen.storyboard */,
 				671E8AD728B276BE0072F9AE /* Info.plist */,
 			);
 			path = just;
+			sourceTree = "<group>";
+		};
+		671E8ADF28B333360072F9AE /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				671E8AEE28B33C850072F9AE /* ProfileView.storyboard */,
+				671E8AE428B334DC0072F9AE /* ProfileView.swift */,
+				671E8AE328B334DC0072F9AE /* ProfileInteractor.swift */,
+				671E8AE028B334DC0072F9AE /* ProfilePresenter.swift */,
+				671E8AE128B334DC0072F9AE /* ProfileLocalDataManager.swift */,
+				671E8AE228B334DC0072F9AE /* ProfileProtocols.swift */,
+				671E8AE528B334DC0072F9AE /* ProfileRemoteDataManager.swift */,
+				671E8AE628B334DC0072F9AE /* ProfileWireFrame.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				671E8AD628B276BE0072F9AE /* LaunchScreen.storyboard in Resources */,
+				671E8AEF28B33C850072F9AE /* ProfileView.storyboard in Resources */,
 				671E8AD328B276BE0072F9AE /* Assets.xcassets in Resources */,
 				671E8AD128B276BB0072F9AE /* Main.storyboard in Resources */,
 			);
@@ -138,9 +174,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				671E8ADE28B2776F0072F9AE /* Entity.swift in Sources */,
+				671E8AEC28B334DC0072F9AE /* ProfileRemoteDataManager.swift in Sources */,
+				671E8AEB28B334DC0072F9AE /* ProfileView.swift in Sources */,
 				671E8ACE28B276BB0072F9AE /* ViewController.swift in Sources */,
+				671E8AED28B334DC0072F9AE /* ProfileWireFrame.swift in Sources */,
 				671E8ACA28B276BB0072F9AE /* AppDelegate.swift in Sources */,
+				671E8AE728B334DC0072F9AE /* ProfilePresenter.swift in Sources */,
 				671E8ACC28B276BB0072F9AE /* SceneDelegate.swift in Sources */,
+				671E8AE828B334DC0072F9AE /* ProfileLocalDataManager.swift in Sources */,
+				671E8AEA28B334DC0072F9AE /* ProfileInteractor.swift in Sources */,
+				671E8AE928B334DC0072F9AE /* ProfileProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
