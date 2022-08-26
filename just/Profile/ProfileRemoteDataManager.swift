@@ -17,8 +17,10 @@ class ProfileRemoteDataManager:ProfileRemoteDataManagerInputProtocol {
         let task = URLSession.shared.dataTask(with: url) { [self] data, response, error in
              
               if let data = data {
+                  print(data)
                   if let res = try? JSONDecoder().decode(Profile.self, from: data) {
                       remoteRequestHandler?.callBackApiData(with: [res])
+                      
                   } else {
                       print("Invalid Response")
                   }

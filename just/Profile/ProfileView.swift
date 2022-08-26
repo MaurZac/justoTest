@@ -8,8 +8,10 @@
 
 import Foundation
 import UIKit
+import GoogleMaps
+import CoreLocation
 
-class ProfileView: UIViewController {
+class ProfileView: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
     // MARK: Properties
     var presenter: ProfilePresenterProtocol?
@@ -24,15 +26,77 @@ class ProfileView: UIViewController {
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var contentVi: UIView!
     // MARK: Lifecycle
-
+    
+    private let locationManager = CLLocationManager()
+    var latt = 00.00
+    var long = 00.00
+    
+    let mapConstainer: GMSMapView = {
+        let mapConstainer = GMSMapView()
+        mapConstainer.contentMode = .scaleAspectFill
+        mapConstainer.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
+        mapConstainer.clipsToBounds = true
+        return mapConstainer
+     }()
+     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         errorView.isHidden = true
         profilePic.makeRounded()
         presenter?.viewDidLoad()
-        print(profResView)
+        mapConstainer.delegate = self
+               constraints()
+               locationManager.delegate = self
+               locationManager.desiredAccuracy = kCLLocationAccuracyBest
+               locationManager.requestAlwaysAuthorization()
+               locationManager.startUpdatingLocation()
+
+
+               if CLLocationManager.locationServicesEnabled() {
+                 switch (CLLocationManager.authorizationStatus()) {
+                   case .notDetermined, .restricted, .denied:
+                     print("No access")
+                   case .authorizedAlways, .authorizedWhenInUse:
+                     print("Access")
+                     DispatchQueue.main.async {
+                         self.showCurrentLocation()
+                         
+                     }
+                     
+                 }
+               } else {
+                 print("Location services are not enabled")
+               }
     }
+    
+    func showCurrentLocation() {
+        mapConstainer.settings.myLocationButton = true
+        view.addSubview(mapConstainer)
+        
+        let center = CLLocationCoordinate2D(latitude: latt, longitude: long)
+              
+              let marker = GMSMarker()
+              marker.position = center
+              
+              marker.icon = UIImage(named: "pinSelected")
+              marker.map = mapConstainer
+              let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: latt, longitude: long, zoom: Float(16.0))
+              self.mapConstainer.animate(to: camera)
+    
+       }
+    
+    func constraints(){
+        
+        contentVi.translatesAutoresizingMaskIntoConstraints = false
+        contentVi.addSubview(mapConstainer)
+        
+        mapConstainer.topAnchor.constraint(equalTo: view.topAnchor , constant: 300).isActive = true
+        mapConstainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        mapConstainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10).isActive = true
+            mapConstainer.heightAnchor.constraint(equalToConstant: 250).isActive = true
+    }
+            
     
     
     
@@ -46,9 +110,13 @@ extension ProfileView: ProfileViewProtocol {
             profilePic.downloaded(from: profResView[0].results?[0].picture?.medium ?? "noimage")
             nameLbl.text = profResView[0].results?[0].name?.first
             ageLbl.text = String(profResView[0].results?[0].dob?.age ?? 0)
+            latt = Double("\(String(describing: profResView[0].results?[0].location?.coordinates?.latitude))") ?? 0.0
+            long = Double("\(profResView[0].results?[0].location?.coordinates?.longitude ?? "")") ?? 0.0
+            mapConstainer.clear()
         }
-        
     }
+    
+    
     
 }
 
